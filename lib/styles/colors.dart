@@ -1,7 +1,5 @@
 import "package:flutter/material.dart";
 
-import 'package:flutter/material.dart';
-
 Color BLACK_COLOR = Color.fromRGBO(36, 36, 36, 1.0);
 Color PRIMARY_COLOR = Color.fromRGBO(93, 156, 236, 1.0);
 Color WHITE_COLOR = Color.fromRGBO(255, 255, 255, 1.0);
