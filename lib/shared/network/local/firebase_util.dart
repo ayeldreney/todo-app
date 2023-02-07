@@ -33,11 +33,10 @@ void updateTask(
   String id,
   String title,
   String description,
-  int date,
 ) {
   getTaskCollection()
       .doc(id)
-      .update({"title": title, "description": description, "date": date})
+      .update({"title": title, "description": description})
       .then((_) => print('Success'))
       .catchError((error) => print('Failed: $error'));
   ;

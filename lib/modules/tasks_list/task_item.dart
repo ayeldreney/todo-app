@@ -12,7 +12,7 @@ import '../../models/task.dart';
 class TaskItem extends StatelessWidget {
   Task task;
   TaskItem(this.task);
-  DateTime selectedDate = DateTime.now();
+
   String cache = "";
   String cache_1 = "";
   @override
@@ -73,11 +73,10 @@ class TaskItem extends StatelessWidget {
                                     TextFormField(
                                       onChanged: (value) {
                                         updateTask(
-                                            task.id,
-                                            value,
-                                            "",
-                                            DateUtils.dateOnly(DateTime.now())
-                                                .millisecond);
+                                          task.id,
+                                          value,
+                                          "",
+                                        );
                                         cache = value;
                                       },
                                       controller: TextEditingController(),
@@ -90,11 +89,10 @@ class TaskItem extends StatelessWidget {
                                     TextFormField(
                                       onChanged: (value) {
                                         updateTask(
-                                            task.id,
-                                            cache,
-                                            value,
-                                            DateUtils.dateOnly(DateTime.now())
-                                                .millisecond);
+                                          task.id,
+                                          cache,
+                                          value,
+                                        );
                                         cache_1 = value;
                                       },
                                       controller: TextEditingController(),
@@ -107,54 +105,6 @@ class TaskItem extends StatelessWidget {
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Select Date",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .copyWith(fontSize: 20),
-                                        ),
-                                      ],
-                                    ),
-                                    StatefulBuilder(
-                                      builder: (context, setState) {
-                                        void selectDate(
-                                            BuildContext context) async {
-                                          DateTime? chosenDate =
-                                              await showDatePicker(
-                                                  context: context,
-                                                  initialDate: selectedDate,
-                                                  firstDate: DateTime.now(),
-                                                  lastDate: DateTime.now().add(
-                                                      Duration(days: 365)));
-
-                                          if (chosenDate == null) return;
-                                          updateTask(
-                                              task.id,
-                                              cache,
-                                              cache_1,
-                                              DateUtils.dateOnly(selectedDate)
-                                                  .millisecond);
-                                          selectedDate = chosenDate;
-
-                                          setState(() {});
-                                        }
-
-                                        return InkWell(
-                                          onTap: () {
-                                            selectDate(context);
-                                          },
-                                          child: Text(
-                                            "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 20,
-                                            ),
-                                          ),
-                                        );
-                                      },
                                     ),
                                     SizedBox(
                                       height: 17,
